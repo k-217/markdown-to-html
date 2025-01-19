@@ -6,7 +6,8 @@ A simple web application that allows users to write markdown and view its corres
 
 - Real-time preview of Markdown as HTML
 - Option to download the HTML code as an executable `.html` file
-- Basic markdown support like headings, lists, code, and more
+- Basic markdown support like headings, lists, code, and more with keyboard shortcuts
+- Toggle option for dark and light theme
 
 ## Installation
 

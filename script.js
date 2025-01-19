@@ -13,7 +13,14 @@ document.getElementById("markdownInput").addEventListener("input", function () {
 
   // Displays the HTML code alongside the preview
   document.getElementById("htmlCode").value = htmlContent;
-});
+
+  // Syntax highlighting
+  const preview = document.getElementById("Preview");
+  const codeBlocks = preview.querySelectorAll("pre code");
+  codeBlocks.forEach((block) => {
+    Prism.highlightElement(block);});
+}
+);
   
 // HTML functionality (listens from a click on button with id = "downloadButton")
 document.getElementById("downloadButton").addEventListener("click", function () {
@@ -60,14 +67,41 @@ document.addEventListener('keydown', function (event) {
   const editor = document.getElementById('markdownInput');
   if (event.ctrlKey) {
     switch (event.key) {
-      case 'b': // Ctrl + B for Bold
+      case 'b': // Ctrl + b for Bold
         insertMarkdown(editor, '**', '**');
         break;
-      case 'i': // Ctrl + I for Italic
+      case 'i': // Ctrl + i for Italic
         insertMarkdown(editor, '*', '*');
         break;
-      case 'h': // Ctrl + H for Heading
+      case 'm': // Ctrl + m for Heading
         insertMarkdown(editor, '# ', '');
+        break;
+      case '~': // Ctrl + ~ for strikethrough
+        insertMarkdown(editor, '~', '~');
+        break;
+      case 'E': // Ctrl + E for horizontal line
+        insertMarkdown(editor, '---', '');
+        break;
+      case 'K': // Ctrl + K for link
+        insertMarkdown(editor, '[click-here](', ')');
+        break;
+      case 'Y': // Ctrl + y for image
+        insertMarkdown(editor, '[alt-text](', ')');
+        break;
+      case 'Q': // Ctrl + Q for table
+        insertMarkdown(editor, 'Column1 | Column2 ', '')
+        break;
+      case 'L': // Ctrl + L for list
+        insertMarkdown(editor, '- ', '')
+        break;
+      case 'q': // Ctrl + q for task checklist
+        insertMarkdown(editor, '- [ ] ', '')
+        break;
+      case '`': // Ctrl + ` for code
+        insertMarkdown(editor, '`', '`')
+        break;
+      case '>':
+        insertMarkdown(editor, '> ', '')
         break;
     }
   }
