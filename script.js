@@ -54,3 +54,28 @@ function toggleTheme() {
   const currentTheme = body.getAttribute('data-theme');
   body.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
 }
+
+// Markdown Shortcuts
+document.addEventListener('keydown', function (event) {
+  const editor = document.getElementById('markdownInput');
+  if (event.ctrlKey) {
+    switch (event.key) {
+      case 'b': // Ctrl + B for Bold
+        insertMarkdown(editor, '**', '**');
+        break;
+      case 'i': // Ctrl + I for Italic
+        insertMarkdown(editor, '*', '*');
+        break;
+      case 'h': // Ctrl + H for Heading
+        insertMarkdown(editor, '# ', '');
+        break;
+    }
+  }
+});
+
+function insertMarkdown(editor, before, after) {
+  const cursorPos = editor.selectionStart;
+  const text = editor.value;
+  editor.value = text.slice(0, cursorPos) + before + text.slice(cursorPos) + after;
+  editor.setSelectionRange(cursorPos + before.length, cursorPos + before.length); // Move cursor
+}
