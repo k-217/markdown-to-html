@@ -1,162 +1,215 @@
+:root {
+  --background-color: #f4f4f4;
+  --text-color: black;
+  --button-background: silver;
+  --button-hover-background: darkgray;
+  --footer-background: #333;
+  --footer-text-color: white;
+  --table-border-color: black;
+  --table-header-background: lightgray;
+  --table-row-hover: #ddd;
+  --table-row-even: #f9f9f9;
+  --textarea-background: white;
+  --textarea-border-color: #ccc;
+  --output-background: #f9f9f9;
+  --output-border-color: #ddd;
+}
+
+[data-theme="dark"] {
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --button-background: #555;
+  --button-hover-background: #444;
+  --footer-background: #000;
+  --footer-text-color: #888;
+  --table-border-color: #666;
+  --table-header-background: #333;
+  --table-row-hover: #444;
+  --table-row-even: #222;
+  --textarea-background: #1e1e1e;
+  --textarea-border-color: #444;
+  --output-background: #1e1e1e;
+  --output-border-color: #555;
+}
+
 body {
-    font-family: Times;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-  }
-    
-  .container {
-    width: 80%;
-    max-width: 1000px;
-    flex-grow: 1;
-  }
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+button {
+  background-color: var(--button-background);
+  color: var(--text-color);
+}
+
+button:hover {
+  background-color: var(--button-hover-background);
+}
+
+footer {
+  background-color: var(--footer-background);
+  color: var(--footer-text-color);
+}
+
+table th,
+table td {
+  border: 1px solid var(--table-border-color);
+}
+
+th {
+  background-color: var(--table-header-background);
+}
+
+tr:nth-child(even) {
+  background-color: var(--table-row-even);
+}
+
+tr:hover {
+  background-color: var(--table-row-hover);
+}
+
+textarea,
+#Preview,
+#htmlCode {
+  background-color: var(--textarea-background);
+  border: 1px solid var(--textarea-border-color);
+  color: var(--text-color);
+}
+
+#Preview {
+  background-color: var(--output-background);
+  border: 1px solid var(--output-border-color);
+}
+
+body {
+  font-family: Times;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+}
   
-  h1 {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .instructions {
-    background-color: white;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 98%;
-    margin-bottom: 20px;
-    border-radius: 8px;
-  }
-  
-  #instructions {
-    width: 100%;
-    align-self: center;
-    border-collapse: collapse;
-    margin: 20px 20px 100x 20x;
-    font-size: 16px;
-    text-align: center;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    border-color: black;
-    padding: 10px 15px;
-  }
-  
-  th {
-    background-color: lightgray;
-    font-weight: bold;
-    text-align: left;
-  }
-  
-  tr:hover {
-    background-color: #ddd;
-  }
-  
-  tr:nth-child(even){
-    background-color: #f9f9f9;
-  }
-  
-  tr:nth-child(even):hover{
-    background-color: #ddd;
-  }
-  
-  .editor {
-    background-color: white;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  #markdownInput {
-    width: 100%;
-    padding: 5px;
-    font-family: monospace;
-    font-size: 14px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    resize: vertical;
-  }
-  
-  .output-sections {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .preview,
-  .html-code {
-    flex: 1;
-    min-width: 45%;
-    background-color: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  #Preview {
-    width: 100%;
-    min-height: 200px;
-    padding: 5px;
-    font-family: monospace;
-    font-size: 16px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    resize: none;
-  }
-  
-  #htmlCode {
-    width: 100%;
-    min-height: 200px;
-    padding: 5px;
-    font-family: monospace;
-    font-size: 16px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    resize: none;
-  }
-  
-  button {
-    display: block;
-    margin: 0 auto 20px auto;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: black;
-    background-color: silver;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: darkgray;
-  }
-  
-  footer {
-    text-align: center;
-    background-color: #333;
-    color: white;
-    padding: 5px;
-    font-size: 16px;
-    position: relative;
-    width: 100%;
-    bottom: 0;
-    margin-top: 20px;
-  }
-  
-  footer p {
-    margin: 5px;
-  }
-  
+.container {
+  width: 80%;
+  max-width: 1000px;
+  flex-grow: 1;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.instructions {
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 98%;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+#instructions {
+  width: 100%;
+  align-self: center;
+  border-collapse: collapse;
+  margin: 20px 20px 100x 20x;
+  font-size: 16px;
+  text-align: center;
+}
+
+th, td {
+  padding: 10px 15px;
+}
+
+th {
+  font-weight: bold;
+  text-align: left;
+}
+
+.editor {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#markdownInput {
+  width: 100%;
+  padding: 5px;
+  font-family: monospace;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+.output-sections {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.preview,
+.html-code {
+  flex: 1;
+  min-width: 45%;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#Preview {
+  width: 100%;
+  min-height: 200px;
+  padding: 5px;
+  font-family: monospace;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  resize: none;
+}
+
+#htmlCode {
+  width: 100%;
+  min-height: 200px;
+  padding: 5px;
+  font-family: monospace;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  resize: none;
+}
+
+button {
+  display: block;
+  margin: 0 auto 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+footer {
+  text-align: center;
+  padding: 5px;
+  font-size: 16px;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  margin-top: 20px;
+}
+
+footer p {
+  margin: 5px;
+}
